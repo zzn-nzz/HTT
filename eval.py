@@ -112,6 +112,8 @@ def main(args):
         ntokens=args.ntokens_action,
         is_demo=args.is_demo,
         epoch=epoch)
+    with open('eval_results.txt', 'a') as file:
+        print(val_results, file=file)
  
          
 if __name__ == "__main__":
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     parser.add_argument('--experiment_tag',default='htt')    
     parser.add_argument('--is_demo', action="store_true", help="show demo result")  
 
-    parser.add_argument('--dataset_folder',default='../fpha/')
+    parser.add_argument('--dataset_folder',default='../h2o/')
     parser.add_argument('--cache_folder',default='./ws/ckpts/')
     parser.add_argument('--resume_path',default='./ws/ckpts/checkpoint_45.pth')
 
@@ -134,7 +136,7 @@ if __name__ == "__main__":
     # Dataset params
     parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="h2ohands",)
     parser.add_argument("--val_dataset", choices=["h2ohands", "fhbhands"], default="h2ohands",) 
-    parser.add_argument("--val_split", default="test", choices=["test", "train", "val"])
+    parser.add_argument("--val_split", default="val", choices=["test", "train", "val"])
     
     
     
@@ -150,7 +152,7 @@ if __name__ == "__main__":
 
     # Training parameters
     parser.add_argument("--manual_seed", type=int, default=0)
-    parser.add_argument("--batch_size", type=int, default=8, help="Batch size")
+    parser.add_argument("--batch_size", type=int, default=4, help="Batch size")
     parser.add_argument("--workers", type=int, default=4, help="Number of workers for multiprocessing")
     parser.add_argument("--epochs", type=int, default=500)
    

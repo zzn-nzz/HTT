@@ -189,7 +189,8 @@ class TemporalNet(torch.nn.Module):
         
         results.update(action_results)
         losses.update(action_losses)
-    
+        with open('forward_results.txt', 'a') as file:
+            print(action_results, file=file)
         return total_loss, results, losses
     
     def recover_hand(self, flatten_sample, flatten_hpose_25d_3d, weights, total_loss,verbose=False):

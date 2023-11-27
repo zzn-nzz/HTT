@@ -49,14 +49,16 @@ def get_segments_actions_objects_info_from_files(path_dataset='./'):
         with open(os.path.join(path_dataset,'./action_labels/action_{:s}.txt'.format(split_tag)),'r') as f:
             segs=f.readlines()[1:] 
             for cline in segs:
+                #print(cline)
                 cline=cline.strip('\n').split(' ')
                 if split_tag=='test':
-                    seg_idx,action_idx=int(cline[0]),int(cline[-1])
+                    seg_idx,action_idx=int(cline[0]),0
                     start_frame_idx,end_frame_idx=int(cline[2]),int(cline[3])
                 else:
                     seg_idx,action_idx=int(cline[0]),int(cline[2])
                     start_frame_idx,end_frame_idx=int(cline[3]),int(cline[4])
                 tag_subject,tag_scene,tag_sequence=cline[1].split('/')
+                #print(action_idx)
                 action_name=list_action_name[action_idx]
                 object_name=action_name.split(' ')[-1]
                 object_idx=dict_object_name_to_idx[object_name]
