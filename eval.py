@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     parser.add_argument('--dataset_folder',default='../fpha/')
     parser.add_argument('--cache_folder',default='./ws/ckpts/')
-    parser.add_argument('--resume_path',default='./ws/ckpts/htt_fpha/checkpoint_45.pth')
+    parser.add_argument('--resume_path',default='./ws/ckpts/checkpoint_45.pth')
 
     #Transformer parameters
     parser.add_argument("--ntokens_pose", type=int, default=16, help="N tokens for P")
@@ -132,8 +132,8 @@ if __name__ == "__main__":
     parser.add_argument("--spacing",type=int,default=2, help="Sample space for temporal sequence")
     
     # Dataset params
-    parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="fhbhands",)
-    parser.add_argument("--val_dataset", choices=["h2ohands", "fhbhands"], default="fhbhands",) 
+    parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="h2ohands",)
+    parser.add_argument("--val_dataset", choices=["h2ohands", "fhbhands"], default="h2ohands",) 
     parser.add_argument("--val_split", default="test", choices=["test", "train", "val"])
     
     
