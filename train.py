@@ -164,8 +164,8 @@ if __name__ == "__main__":
     torch.multiprocessing.set_sharing_strategy("file_system")
     parser = argparse.ArgumentParser() 
     parser.add_argument('--experiment_tag',default='hello') 
-    parser.add_argument('--dataset_folder',default='../fpha/')
-    parser.add_argument('--cache_folder',default='./ws/ckpts/')
+    parser.add_argument('--dataset_folder',default='../h2o/')
+    parser.add_argument('--cache_folder',default='./ws/ckpts/my_dat')
     parser.add_argument('--resume_path',default=None)
 
     #Transformer parameters
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     
     # Dataset params
     parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="fhbhands",)
-    parser.add_argument("--train_split", default="train", choices=["test", "train", "val"])
+    parser.add_argument("--train_split", default="train", choices=["test", "train", "val", "my_train", "my_val", "my_test"])
     
     
     parser.add_argument("--center_idx", default=0, type=int)
