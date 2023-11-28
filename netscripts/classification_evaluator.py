@@ -23,6 +23,8 @@ class FrameClassificationEvaluator:
         
         for idx in range(0,gt_labels.shape[0]):
             if weights[idx]>1e-4:# and (idx+1==gt_labels.shape[0] or weights[idx+1]<1e-4):
+                with open('obj_eval.txt', 'a') as file:
+                    print(gt_labels[idx], pred_labels[idx], file=file)
                 self.count_matrix[gt_labels[idx],pred_labels[idx]]+=1
 
                 
@@ -68,7 +70,8 @@ class SequenceClassificationEvaluator:
         
 
         
-
+        with open('action_eval.txt', 'a') as file:
+            print(pred_results, file=file)
         for seq_id in range(0,len(info_subjects)):
             c_pred=pred_results[seq_id]
             c_tag=(info_subjects[seq_id],info_action_names[seq_id],info_seq_idx[seq_id],self.label_info[info_action_names[seq_id]])
