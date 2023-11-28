@@ -165,7 +165,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser() 
     parser.add_argument('--experiment_tag',default='hello') 
     parser.add_argument('--dataset_folder',default='../h2o/')
-    parser.add_argument('--cache_folder',default='./ws/ckpts/my_dat')
+    parser.add_argument('--cache_folder',default='./ws/my_dat')
     parser.add_argument('--resume_path',default=None)
 
     #Transformer parameters
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     parser.add_argument("--spacing",type=int,default=2, help="Sample space for temporal sequence")
     
     # Dataset params
-    parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="fhbhands",)
+    parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="h2ohands",)
     parser.add_argument("--train_split", default="train", choices=["test", "train", "val", "my_train", "my_val", "my_test"])
     
     
