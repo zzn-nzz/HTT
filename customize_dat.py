@@ -34,6 +34,17 @@ train_size = int(0.7 * total_lines)
 train_data = all_wanted_data[:train_size]
 test_data = all_wanted_data[train_size:]
 
+for i, line in enumerate(train_data, start=1):
+    parts = line.split()
+    parts[0] = str(i)
+    new_line = ' '.join(parts)
+    train_data[i - 1] = new_line + '\n'
+for i, line in enumerate(test_data, start=1):
+    parts = line.split()
+    parts[0] = str(i)
+    new_line = ' '.join(parts)
+    test_data[i - 1] = new_line + '\n'
+
 print(f"ALL Data size: {len(all_wanted_data)}")
 print(f"Train set size: {len(train_data)}")
 print(f"Test set size: {len(test_data)}")
