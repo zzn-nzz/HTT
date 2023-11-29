@@ -175,7 +175,7 @@ if __name__ == "__main__":
     
     # Dataset params
     parser.add_argument("--train_dataset",choices=["h2ohands", "fhbhands"],default="h2ohands",)
-    parser.add_argument("--train_split", default="train", choices=["test", "train", "val", "my_train", "my_val", "my_test"])
+    parser.add_argument("--train_split", default="my_train", choices=["test", "train", "val", "my_train", "my_val", "my_test"])
     
     
     parser.add_argument("--center_idx", default=0, type=int)

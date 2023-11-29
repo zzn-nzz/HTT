@@ -173,7 +173,17 @@ def epoch_pass(
 
         print("action recall-rate on video, TP: {:d}, Total: {:d}, recall rate {:.2f}".format(int(save_dict["action_video_seq_tp"]),int(save_dict["action_video_seq_total"]),\
                         save_dict["action_video_seq_recall_rate_mean"]*100))
-
+    action_result=action_evaluator.get_recall_rate(aggregate_sequence=aggregate_sequence,verbose=False)
+    for k,v in action_result.items():
+        save_dict['action_'+k]=v 
+    objlabel_result=objlabel_evaluator.get_recall_rate()
+    for k,v in objlabel_result.items():
+        save_dict['objlabel_'+k]=v
+    print("action recall-rate on video, TP: {:d}, Total: {:d}, recall rate {:.2f}".format(int(save_dict["action_video_seq_tp"]),int(save_dict["action_video_seq_total"]),\
+                        save_dict["action_video_seq_recall_rate_mean"]*100))
+    print("object recall-rate on video, TP: {:d}, Total: {:d}, recall rate {:.2f}".format(int(save_dict["objlabel_total_samples"]),int(save_dict["objlabel_total_tp"]),\
+                        save_dict["objlabel_recall_rate_mean"]*100))
+    
     
     if not tensorboard_writer is None:
         for k,v in save_dict.items():

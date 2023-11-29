@@ -90,7 +90,7 @@ class H2OHands(object):
         self.cam_intr[:2] = self.cam_intr[:2] * self.reduce_factor  
         self.image_size = [1280,720] if self.reduce_factor>0.999 else [480,270] 
         
-        if self.split=='train':
+        if self.split=='train' or self.split == 'my_train':
             try:
                 self.env_r=lmdb.open(os.path.join(self.root,'lmdb_imgs',self.split),readonly=True,lock=False,readahead=False,meminit=False,\
                                 map_size=(1024)**3,max_spare_txns=32,max_dbs=1000)

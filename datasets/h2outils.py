@@ -44,7 +44,8 @@ def get_object_tag_to_idx():
 def get_segments_actions_objects_info_from_files(path_dataset='./'):
     list_action_name=get_action_idx_to_tag()
     dict_object_name_to_idx=get_object_tag_to_idx()
-    frame_segments={'train':[],'val':[], 'test':[]}
+    #frame_segments={'train':[],'val':[], 'test':[]}
+    frame_segments={'my_train':[], 'my_test':[]}
     for split_tag in frame_segments.keys():
         with open(os.path.join(path_dataset,'./action_labels/action_{:s}.txt'.format(split_tag)),'r') as f:
             segs=f.readlines()[1:] 
@@ -109,6 +110,8 @@ def get_seq_map(frame_segments,sample_infos,ntokens_pose, ntokens_action, spacin
     full = []
     
     for sample_idx, sample_info in enumerate(sample_infos):
+        #print(sample_info)
+        #print(frame_segments)
         cseg=frame_segments[sample_info['seq_idx']]
         if sample_info["frame_idx"]==cseg["start_idx"]:        
             seq_count=0
